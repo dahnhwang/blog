@@ -1,4 +1,9 @@
 ---
+title: About
+permalink: /about/
+layout: page
+---
+
 Web developer: "Java, Spring, php"
 Database: "Oracle, MySQL"
 Big data: "Linux, Hadoop, Python, R"
