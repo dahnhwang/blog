@@ -6,7 +6,7 @@ layout: page
 
 Interested in NLP & Recommender system.
 
-Life with computer science and two kids since 2016.
+Life with codes and two kids since 2016.
 
 
 
