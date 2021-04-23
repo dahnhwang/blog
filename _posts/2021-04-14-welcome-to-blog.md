@@ -64,9 +64,24 @@ count
 {% highlight ruby %}
 raw['checked'] = 1
 raw = raw.drop(['View.Start'], axis=1)
+raw.head(3)
 {% endhighlight %}
 
+| Applicant.ID          | Job.ID          | checked         |
+|------------------|------------------|-----------------|
+| 980     | 1610     | 1     |
+| 980	      | 1610      | 	1   |
+| 981		      | 2989      | 	1   |
 
+그런데 위 테이블에서 볼 수 있듯이 한 명의 구직자가 동일한 채용공고를 여러번 확인했을 수 있으므로 중복되는 행은 제외하도록 한다.
+
+{% highlight ruby %}
+train.drop_duplicates(subset=None, keep="first", inplace=True)
+{% endhighlight %}
+
+이렇게 하여 `checked`의 값이 1인 총 8920 행으로 된 테이블이 되었다.
+
+3. 페이지 확인일시(`View.Start`)의 관계가 없는(즉 `checked`가 0인 경우) 구직자-채용정보 간 테이블을 생성하여 기존 테이블과 합침
 
 <!-- 
 {% highlight ruby %}
