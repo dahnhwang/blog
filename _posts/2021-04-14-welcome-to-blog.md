@@ -34,7 +34,7 @@ raw[['Applicant.ID','Job.ID','View.Start']].head(3)
 
 ## Data Preprocessing
 
-###1. 식별자 레이블링 작업
+### 1. 식별자 레이블링 작업
 
 {% highlight ruby %}
 import pandas as pd
@@ -52,7 +52,7 @@ raw['Job.ID'] = item_enc.fit_transform(raw['Job.ID'].values)
 sklearn의 LabelEncoder를 사용하여 10000부터 매겨져있는 기존 테이블의 ID를 정수 1부터 시작하는 것으로 새롭게 라벨링을 했다. 데이터셋에서 사용자의 ID가 정수로 되어있는 경우는 드물기 때문에 무조건 처리해주고 시작하는게 좋은 것 같다.
 
 
-###2. 페이지 확인일시(`View.Start`)를 1의 값을 가지는 새로운 컬럼 `checked`로 변환
+### 2. 페이지 확인일시(`View.Start`)를 1의 값을 가지는 새로운 컬럼 `checked`로 변환
 
 {% highlight ruby %}
 count = raw['View.Start'].isnull().sum()
@@ -81,7 +81,7 @@ train.drop_duplicates(subset=None, keep="first", inplace=True)
 
 이렇게 하여 `checked`의 값이 1인 총 8920 행으로 된 테이블이 되었다.
 
-###3. 페이지 확인일시(`View.Start`)의 관계가 없는(즉 `checked`가 0인 경우) 구직자-채용정보 간 테이블을 생성하여 기존 테이블과 합침
+### 3. 페이지 확인일시(`View.Start`)의 관계가 없는(즉 `checked`가 0인 경우) 구직자-채용정보 간 테이블을 생성하여 기존 테이블과 합침
 
 <!-- 
 {% highlight ruby %}
