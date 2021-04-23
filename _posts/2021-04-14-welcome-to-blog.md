@@ -107,3 +107,13 @@ job_uid = raw['Job.ID'].unique()
 user_uid_table = DataFrame({'Applicant.ID':user_uid})
 job_uid_table = DataFrame({'Job.ID':job_uid})
 {% endhighlight %}
+
+구직자 및 채용공고의 unique 값으로 이루어진 각각의 다른 두 개의 테이블 `user_uid_table` 와 `job_uid_table`을 생성해 이 둘을 곱집합(Cartesian product)한 테이블을 만들 것이다. 즉, 모든 구직자에 대한 모든 채용공고의 관계(`full_table`)를 나타낼 것이다. 
+
+{% highlight python %}
+user_uid_table['checked'] = 0
+job_uid_table['checked'] = 0
+
+full_table = user_uid_table.merge(job_uid_table, on='checked') # 24298056 
+{% highlight python %}
+
