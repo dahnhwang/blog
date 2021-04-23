@@ -8,7 +8,7 @@ layout: post
 ## Dataset
 총 5개의 데이터셋 중 구직자의 채용공고 페이지 방문이력 정보가 들어있는 `Job_Views.csv` 중 구직자 식별정보(`Applicant.ID`), 채용 식별정보(`Job.ID`) 및 페이지 확인일시(`View.Start`) 컬럼 만을 이용해볼 것이다.  
 {% highlight ruby %}
-train[['Applicant.ID','Job.ID','View.Start']].head(3)
+raw[['Applicant.ID','Job.ID','View.Start']].head(3)
 {% endhighlight %}
 
 | Applicant.ID          | Job.ID          | View.Start         |
@@ -17,7 +17,7 @@ train[['Applicant.ID','Job.ID','View.Start']].head(3)
 | 10000	      | 96655      | 	2014-12-12 20:08:50 UTC   |
 | 10001		      | 84141      | 	2014-12-12 20:12:32 UTC   |
 
-## Data Preprocessing
+## Data Preprocessing Planning
 이 실험에서는 페이지 확인일시(View.Start)값이 있는 경우 구직자의 관심있음을 1, 값이 없는 경우 0으로 하는 `checked` 컬럼을 새로 만들어 진행해볼 것이다. 크게 아래 순서로 진행한다.
 
 1. 식별자 레이블링 작업
@@ -31,6 +31,39 @@ train[['Applicant.ID','Job.ID','View.Start']].head(3)
 | 1     | 1     | 1     |
 | 1	      | 2      | 	1   |
 | 2		      | 3      | 	0   |
+
+## Data Preprocessing
+
+1. 식별자 레이블링 작업
+
+{% highlight ruby %}
+import pandas as pd
+import tensorflow as tf
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+
+user_enc = LabelEncoder()
+raw['Applicant.ID'] = user_enc.fit_transform(raw['Applicant.ID'].values)
+
+item_enc = LabelEncoder()
+raw['Job.ID'] = item_enc.fit_transform(raw['Job.ID'].values)
+{% endhighlight %}
+
+sklearn의 LabelEncoder를 사용하여 10000부터 매겨져있는 기존 테이블의 ID를 정수 1부터 시작하는 것으로 새롭게 라벨링을 했다. 데이터셋에서 사용자의 ID가 정수로 되어있는 경우는 드물기 때문에 무조건 처리해주고 시작하는게 좋은 것 같다.
+
+2. 페이지 확인일시(`View.Start`)를 1의 값을 가지는 새로운 컬럼 `checked`로 변환
+
+{% highlight ruby %}
+count = raw['View.Start'].isnull().sum()
+count 
+{% endhighlight %}
+
+페이지 확인일시(`View.Start`) 정보가 없는 행이 하나도 없기 때문에 이를 새로운 컬럼으로 변환하는 작업을 계속 진행한다.
+
+{% highlight ruby %}
+raw['checked'] = 1
+raw = raw.drop(['View.Start'], axis=1)
+{% endhighlight %}
 
 
 
