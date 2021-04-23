@@ -19,6 +19,14 @@ raw[['Applicant.ID','Job.ID','View.Start']].head(3)
 | 10000	      | 96655      | 	2014-12-12 20:08:50 UTC   |
 | 10001		      | 84141      | 	2014-12-12 20:12:32 UTC   |
 
+{% highlight python %}
+user_count = raw['Applicant.ID'].unique().shape[0]
+job_count = raw['Job.ID'].unique().shape[0]
+print(user_count, job_count) 
+{% endhighlight %}
+
+3448명의 구직자와 7047개의 채용공고로 이루어진 테이블이다. 
+
 
 
 ## Data Preprocessing Planning
@@ -93,3 +101,9 @@ train.drop_duplicates(subset=None, keep="first", inplace=True)
 
 주어진 데이터셋의 경우 구직자가 채용공고를 확인한 데이터만 존재하고 그렇지 않은 경우의 데이터는 존재하지 않는다. 따라서 확인하지 않은 데이터를 새로 생성하기로 하였다.
 
+{% highlight python %}
+user_uid = raw['Applicant.ID'].unique()
+job_uid = raw['Job.ID'].unique()
+user_uid_table = DataFrame({'Applicant.ID':user_uid})
+job_uid_table = DataFrame({'Job.ID':job_uid})
+{% endhighlight %}
