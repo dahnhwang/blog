@@ -113,7 +113,32 @@ job_uid_table = DataFrame({'Job.ID':job_uid})
 {% highlight python %}
 user_uid_table['checked'] = 0
 job_uid_table['checked'] = 0
-
-full_table = user_uid_table.merge(job_uid_table, on='checked') # 24298056 
 {% highlight python %}
 
+{% highlight python %}
+user_uid_table.head(3)
+{% endhighlight %}
+
+| Applicant.ID          | checked          |
+|------------------|------------------|
+| 980     | 0     |
+| 981	      | 0      |
+| 982		      | 0      |
+
+{% highlight python %}
+job_uid_table.head(3)
+{% endhighlight %}
+
+| Job.ID          | checked          |
+|------------------|------------------|
+| 1610     | 0     |
+| 1611	      | 0      |
+| 1612		      | 0      |
+
+위와 같은 3448*2짜리 `user_uid_table`과 7047*2짜리 `job_uid_table`을 `checked`를 통해 조인시켜 `full_table`을 만든다.
+
+{% highlight python %}
+full_table = user_uid_table.merge(job_uid_table, on='checked') # 24298056 
+{% endhighlight %}
+
+결과로 3,448*7,047의 결과값인 24,298,056개의 행을 가진 테이블이 생성되었다.
