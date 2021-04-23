@@ -141,9 +141,9 @@ job_uid_table.head(3)
 full_table = user_uid_table.merge(job_uid_table, on='checked') # 24298056 
 {% endhighlight %}
 
-결과로 3,448*7,047의 결과값인 24,298,056개의 행을 가진 테이블이 생성되었다.
+<!-- 결과로 3,448*7,047의 결과값인 24,298,056개의 행을 가진 테이블이 생성되었다.
 
-이제 기존의 `raw` 테이블과 `full_table`을 concat을 통해 합친다음, 중복되는 데이터 중 `checked`값이 0인 경우는 삭제하여 모델에 입력할 최종 데이터셋을 만들 것이다.
+이제 기존의 `raw` 테이블과 `full_table`을 concat을 통해 합친다음, 중복되는 데이터 중 `checked`값이 0인 경우는 삭제하여 모델에 입력할 최종 데이터셋을 만들 것이다. -->
 
 {% highlight python %}
 concat_df = pd.concat([full_table, raw]) 
