@@ -207,4 +207,4 @@ X_train.shape, X_val.shape, y_train.shape, y_val.shape
 Collaborative Filtering 중에서 Matrix Factorization을 사용해 사용자(구직자)와 아이템(채용공고)의 Latent Factor 행렬을 학습시켜볼 것이다.
 
 
-<font color='dodgerblue'>Last updated: April 25, 2021</font>
+<font color='#909194'>Last updated: April 25, 2021</font>
