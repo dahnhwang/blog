@@ -204,3 +204,4 @@ X_train.shape, X_val.shape, y_train.shape, y_val.shape
 
 ## Model Training
 
+Collaborative Filtering 중에서 Latent Factor model이며 가장 심플한 Matrix Factorization을 사용해본다. 
