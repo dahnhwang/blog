@@ -94,7 +94,7 @@ raw.head(3)
 train.drop_duplicates(subset=None, keep="first", inplace=True)
 {% endhighlight %}
 
-이렇게 하여 `checked`의 값이 1인 총 8920행으로 된 테이블이 되었다.
+이렇게 하여 `checked`의 값이 1인 총 ㅍ 된 테이블이 되었다.
 
 
 ### 3. 페이지 확인일시(`View.Start`)의 관계가 없는(즉 `checked`가 0인 경우) 구직자-채용정보 간 테이블을 생성하여 기존 테이블과 합침
@@ -153,4 +153,25 @@ concat_df
 {% highlight python %}
 train = concat_df.drop_duplicates(subset=['Applicant.ID', 'Job.ID'], keep='last')
 {% endhighlight %}
+
+학습에 사용할 `train` 테이블은 `concat_df`의 행 수(24,306,976) - `raw`의 행 수(8,920)인 24,298,056개의 행으로 확인되어 중복처리가 잘 이루어졌음을 확인할 수 있다.
+
+{% highlight python %}
+train
+{% endhighlight %}
+
+| Applicant.ID          | Job.ID          |    checked      |
+|------------------|------------------|-----------------|
+| 980     | 2298     | 0    |
+| 980	      | 1899      | 	0   |
+| 980		      | 1425      | 	0   |
+| 980		      | 487      | 	0   |
+| 980		      | 4230      | 	0   |
+| ...		      | ...      | 	...   |
+| 979		      | 1404      |1   |
+| 979		      | 17      | 	1   |
+| 979		      | 54      | 	1   |
+| 979		      | 2      | 	1   |
+| 979		      |52      | 	1   |
+
 
