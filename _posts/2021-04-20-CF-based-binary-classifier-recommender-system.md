@@ -138,12 +138,10 @@ job_uid_table.head(3)
 위와 같은 3448 × 2짜리 `user_uid_table`과 7047 × 2짜리 `job_uid_table`을 `checked`를 통해 조인시켜 `full_table`을 만든다.
 
 {% highlight python %}
-full_table = user_uid_table.merge(job_uid_table, on='checked') # 24298056 
+full_table = user_uid_table.merge(job_uid_table, on='checked') # 24298056 rows 
 {% endhighlight %}
 
-<!-- 결과로 3,448*7,047의 결과값인 24,298,056개의 행을 가진 테이블이 생성되었다.
-
-이제 기존의 `raw` 테이블과 `full_table`을 concat을 통해 합친다음, 중복되는 데이터 중 `checked`값이 0인 경우는 삭제하여 모델에 입력할 최종 데이터셋을 만들 것이다. -->
+결과로 3,448 x 7,047의 결과값인 24,298,056개의 행을 가진 테이블이 생성되었다. 이제 기존의 `raw` 테이블과 `full_table`을 concat을 통해 합칠 것인데, `Applicant.ID`와 `Job.ID`가 중복되는 경우 `checked`값이 1인 row를 그대로 보존하여 모델에 입력할 최종 데이터셋을 만들 것이다.
 
 {% highlight python %}
 concat_df = pd.concat([full_table, raw]) 
