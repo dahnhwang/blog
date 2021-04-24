@@ -174,4 +174,13 @@ train
 | 979		      | 2      | 	1   |
 | 979		      |52      | 	1   |
 
+{% highlight python %}
+count = train['checked'].value_counts()
+{% endhighlight %}
+
+구직자와 채용공고의 관계 중 `checked`가 0인 것은 24,289,136개, 1인 것은 본래 `raw` 데이터셋에서도 확인하였듯이 8,920개로 0의 분포가 약 99.9%의 비율로 나타난다. 이러한 비균형적인 데이터 분포에 대해 처리해주는 기법이 존재하지만 금번 실험에서는 우선 제외하고 진행해보았다.
+
+
+
+## Train/Test/Validation set splitting
 
