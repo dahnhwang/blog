@@ -135,7 +135,7 @@ job_uid_table.head(3)
 | 1611	      | 0      |
 | 1612		      | 0      |
 
-위와 같은 3448*2짜리 `user_uid_table`과 7047*2짜리 `job_uid_table`을 `checked`를 통해 조인시켜 `full_table`을 만든다.
+위와 같은 3448 × 2짜리 `user_uid_table`과 7047 × 2짜리 `job_uid_table`을 `checked`를 통해 조인시켜 `full_table`을 만든다.
 
 {% highlight python %}
 full_table = user_uid_table.merge(job_uid_table, on='checked') # 24298056 
