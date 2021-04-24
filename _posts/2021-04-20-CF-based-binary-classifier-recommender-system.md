@@ -182,5 +182,24 @@ count = train['checked'].value_counts()
 
 
 
-## Train/Test/Validation set splitting
+## Train/Validation/Test set splitting
 
+테스트셋은 원칙적으로는 처음부터 분리를 했어야 하나, 여기서는 한번에 Train, Validation, Test셋을 분리하였다. 20%의 Test셋을 분리한 다음 나머지 80%를 다시 8:2의 비율로 나눠 학습과 검증으로 사용하였다.
+
+{% highlight python %}
+X = train[['Applicant.ID', 'Job.ID']].values
+y = train['checked'].values.astype('float32')
+
+x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=True, stratify=y, random_state=34)
+
+X_train, X_val, y_train, y_val = train_test_split(x_train, y_train, test_size=0.2, shuffle=True, stratify=y_train, random_state=34)
+
+X_train.shape, X_val.shape, y_train.shape, y_val.shape
+{% endhighlight %}
+
+학습과 검증으로 사용될 데이터셋의 형태 및 수는 다음과 같다.
+((15550755, 2), (3887689, 2), (15550755,), (3887689,))
+
+
+
+## Train/Validation/Test set splitting
