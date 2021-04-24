@@ -206,8 +206,31 @@ X_train.shape, X_val.shape, y_train.shape, y_val.shape
 
 Collaborative Filtering 중에서 Matrix Factorization을 사용해 사용자(구직자)와 아이템(채용공고)의 Latent Factor 행렬을 학습시켜볼 것이다.
 
+{% highlight python %}
+# modeling imports
+from keras.models import Model
+from keras.layers import Add, Activation
+from keras.layers import Input, Reshape, Dot, Dense, Concatenate, Dropout
+from keras.layers.embeddings import Embedding
+from keras import regularizers
+from keras import optimizers
+from keras.optimizers import RMSprop
+{% endhighlight %}
 
+케라스를 이용해 모델링을 할 것이므로 필요한 모듈을 모두 import해둔다.
 
+{% highlight python %}
+class EmbeddingLayer:
+    def __init__(self, n_items, n_factors):
+        self.n_items = n_items
+        self.n_factors = n_factors
+    
+    def __call__(self, x):
+        x = Embedding(self.n_items, self.n_factors, embeddings_initializer='he_normal',
+                      embeddings_regularizer=regularizers.l2(1e-4))(x)
+        x = Reshape((self.n_factors,))(x)
+        return x
+{% endhighlight %}
 
 
 
