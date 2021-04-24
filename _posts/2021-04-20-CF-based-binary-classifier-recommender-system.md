@@ -232,7 +232,9 @@ class EmbeddingLayer:
         return x
 {% endhighlight %}
 
+`n_items`는 unique한 구직자 또는 채용공고의 총 개수를 말한다. Matrix Factorization을 통해 유사한  구직자 또는 채용공고끼리 그룹핑하는 내재 규칙(Latent Factor)를 찾는 것이 목표이므로  
 
+Keras에서 제공하는 Embedding 함수의 경우 
 
 
 
