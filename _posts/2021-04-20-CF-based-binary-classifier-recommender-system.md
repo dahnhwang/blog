@@ -113,7 +113,7 @@ job_uid_table = DataFrame({'Job.ID':job_uid})
 {% highlight python %}
 user_uid_table['checked'] = 0
 job_uid_table['checked'] = 0
-{% highlight python %}
+{% endhighlight %}
 
 {% highlight python %}
 user_uid_table.head(3)
@@ -144,16 +144,15 @@ full_table = user_uid_table.merge(job_uid_table, on='checked') # 24298056
 <!-- 결과로 3,448*7,047의 결과값인 24,298,056개의 행을 가진 테이블이 생성되었다.
 
 이제 기존의 `raw` 테이블과 `full_table`을 concat을 통해 합친다음, 중복되는 데이터 중 `checked`값이 0인 경우는 삭제하여 모델에 입력할 최종 데이터셋을 만들 것이다. -->
-<!-- 
+
 {% highlight python %}
 concat_df = pd.concat([full_table, raw]) 
 concat_df
-{% endhighlight %} -->
+{% endhighlight %}
 
-<!-- 중복제거 전 테이블의 행끼리 그냥 합친 `concat_df`는 24306976 rows × 3 columns로 확인된다.
+중복제거 전 테이블의 행끼리 그냥 합친 `concat_df`는 24306976 rows × 3 columns로 확인된다.
 
 {% highlight python %}
 train = concat_df.drop_duplicates(subset=['Applicant.ID', 'Job.ID'], keep='last')
 {% endhighlight %}
 
- -->
