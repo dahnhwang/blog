@@ -232,7 +232,7 @@ class EmbeddingLayer:
         return x
 {% endhighlight %}
 
-`n_items`는 unique한 구직자 또는 채용공고의 총 개수를 말한다. Matrix Factorization을 통해 유사한  구직자 또는 채용공고끼리 그룹핑하는 내재 규칙(Latent Factor) 수에 맞는 구직자/채용공고 벡터를 찾는 것이 목표이다. 즉 구직자/채용공고 행렬의 차원을 `n_items` 사이즈로 축소하는 것이라 볼 수 있다. Latent Factor는 하이퍼 파라미터로 미리 정해서 학습시켜야 한다. 여기서는 100으로 고정하여 실험해보았다.
+우선 축소된 차원의 구직자/채용공고 벡터를 리턴하는 클래스를 정의한다. `n_items`는 unique한 구직자 또는 채용공고의 총 개수를 말한다. Matrix Factorization을 통해 유사한  구직자 또는 채용공고끼리 그룹핑하는 내재 규칙(Latent Factor) 수에 맞는 구직자/채용공고 벡터를 찾는 것이 목표이다. 즉 구직자/채용공고 행렬의 차원을 `n_factors` 사이즈로 축소하는 것이라 볼 수 있다. Latent Factor에 해당하는 `n_factor`는 하이퍼파라미터로 미리 정해서 학습시켜야 한다. 여기서는 100으로 고정하여 실험하였다.
 
 위 `EmbeddingLayer` 클래스에서는 Keras에서 제공하는 Embedding 함수의 3차원 텐서 아웃풋 형태를 `Reshape`하여 2차원
 
