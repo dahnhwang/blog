@@ -236,14 +236,27 @@ class EmbeddingLayer:
 
 예를 들어 구직자 벡터만을 놓고 설명하면, 데이터셋에 총 3명의 구직자가 있다면 1번 구직자의 벡터는 [1,0,0], 2번 구직자의 벡터는 [0,1,0], 3번 구직자의 벡터는 [0,0,1]이라는 3차원의 원핫 인코딩으로 나타낼 수 있다. 이를 3차원보다 작은 `n_factors` 사이즈로 축소(=데이터 안에서 `n_factors` 개수만큼 구직자를 그룹으로 분류)하게 되는데, (채용공고 벡터와 Dot product를 통해) 가장 실제값과 유사한 예측값을 내놓게되는 `n_factors` 차원의 구직자 벡터를 찾는 것이 학습의 목표다. 
 
+{% highlight python %}
+def Recommender(n_users, n_items, n_factors):
+    user = Input(shape=(1,))
+    u = EmbeddingLayer(n_users, n_factors)(user)
+    ub = EmbeddingLayer(n_users, 1)(user)
+    
+    item = Input(shape=(1,))
+    m = EmbeddingLayer(n_items, n_factors)(item)
+    mb = EmbeddingLayer(n_items, 1)(item) 
+    
+    x = Dot(axes=1)([u, m])
+    x = Add()([x, ub, mb])
+    y = Activation('sigmoid')(x)
 
+    model = Model(inputs=[user, item], outputs=y)
+    rms = RMSprop(learning_rate=0.1)
+    model.compile(loss='binary_crossentropy', optimizer=rms, metrics=['accuracy'])
+    return model
+{% endhighlight %}
 
-
-
-
-
-
-
+이 data는 binary classification 이며 마지막의 output이 확률이기 때문에 binary_crossentropy가 loss function으로 적절하다.
 
 
 
