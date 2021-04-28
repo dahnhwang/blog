@@ -256,7 +256,7 @@ def Recommender(n_users, n_items, n_factors):
     return model
 {% endhighlight %}
 
-![graph](/assets/CF_graph.png)
+![graph](/blog/assets/CF_graph.png)
 
 
 이 data는 binary classification 이며 마지막의 output이 확률이기 때문에 binary_crossentropy가 loss function으로 적절하다.
