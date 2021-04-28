@@ -243,11 +243,11 @@ def Recommender(n_users, n_items, n_factors):
     ub = EmbeddingLayer(n_users, 1)(user)
     
     item = Input(shape=(1,))
-    m = EmbeddingLayer(n_items, n_factors)(item)
-    mb = EmbeddingLayer(n_items, 1)(item) 
+    i = EmbeddingLayer(n_items, n_factors)(item)
+    ib = EmbeddingLayer(n_items, 1)(item) 
     
-    x = Dot(axes=1)([u, m])
-    x = Add()([x, ub, mb])
+    x = Dot(axes=1)([u, i])
+    x = Add()([x, ub, ib])
     y = Activation('sigmoid')(x)
 
     model = Model(inputs=[user, item], outputs=y)
