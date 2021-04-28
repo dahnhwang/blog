@@ -210,7 +210,7 @@ Collaborative Filtering 중에서 Matrix Factorization을 사용해 사용자(�
 # modeling imports
 from keras.models import Model
 from keras.layers import Add, Activation
-from keras.layers import Input, Reshape, Dot, Dense, Concatenate, Dropout
+from keras.layers import Input, Reshape, Dot
 from keras.layers.embeddings import Embedding
 from keras import regularizers
 from keras import optimizers
