@@ -256,7 +256,11 @@ def Recommender(n_users, n_items, n_factors):
     return model
 {% endhighlight %}
 
+이해를 돕기 위해 아래와 같이 도식도를 그려보았다.
+
 ![CF_model](/blog/assets/CF_model.png)
+
+구직자와 채용공고가 동일한 `n_factors` 차원의 벡터로 임베딩된 뒤 내적(Dot product)을 통해 유사도를 계산하고 활성화함수인 sigmoid를 거쳐 지원을 하게 될지(1), 하지 않을지(0) 확률을 학습하게 된다. 
 
 이 data는 binary classification 이며 마지막의 output이 확률이기 때문에 binary_crossentropy가 loss function으로 적절하다.
 
