@@ -291,14 +291,8 @@ history = model.fit(x=X_train_array, y=y_train, batch_size=10000, epochs=5, verb
 ## Testing
 
 {% highlight python %}
-test_job = x_test
-test_job
+x_test_array = [x_test[:, 0], x_test[:, 1]]
+y_classes = np.round(model.predict(test_job_array))
 {% endhighlight %}
-array([[1008, 1569],
-       [1036, 4331],
-       [2454, 4958],
-       ...,
-       [1292, 5574],
-       [1664, 2809],
-       [2190, 5346]])
+
 <font color='#909194'>Last updated: April 25, 2021</font>
