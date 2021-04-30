@@ -294,5 +294,7 @@ Epoch 5/5
 1556/1556 [==============================] - 26s 17ms/step - loss: 0.8705 - accuracy: 0.9986 - val_loss: 0.9830 - val_accuracy: 0.9818
 {% endhighlight %}
 
+![CF_loss](/blog/assets/CF_loss.png)
+![CF_accuracy](/blog/assets/CF_accuracy.png)
 
 <font color='#909194'>Last updated: April 25, 2021</font>
