@@ -292,7 +292,10 @@ history = model.fit(x=X_train_array, y=y_train, batch_size=10000, epochs=5, verb
 
 {% highlight python %}
 x_test_array = [x_test[:, 0], x_test[:, 1]]
-y_classes = np.round(model.predict(test_job_array))
+y_classes = np.round(model.predict(x_test_array))
 {% endhighlight %}
+
+위 Train/Validation/Test set splitting에서 분리해놓았던 `x_test`의 구직자 및 채용공고 고유번호 데이터를 모델에 넣고 예측값을 살펴본다. 
+
 
 <font color='#909194'>Last updated: April 25, 2021</font>
