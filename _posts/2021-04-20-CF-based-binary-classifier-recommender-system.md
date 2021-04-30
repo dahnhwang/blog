@@ -202,7 +202,7 @@ X_train.shape, X_val.shape, y_train.shape, y_val.shape
 
 
 
-## Model Training
+## Model Building
 
 Collaborative Filtering 중에서 Matrix Factorization을 사용해 사용자(구직자)와 아이템(채용공고)의 Latent Factor 행렬을 학습시켜볼 것이다.
 
@@ -265,6 +265,9 @@ def Recommender(n_users, n_items, n_factors):
 Binary Classification 문제의 경우 활성화함수로 sigmoid function을 사용하는데, 이해를 위해서 찾고 또 찾다가 한 [유튜브 강의](https://www.youtube.com/watch?v=WsFasV46KgQ)에서 명쾌한 해답을 얻었다. 참고하면 좋다.
 
 
+
+## Model Training
+
 {% highlight python %}
 n_factors = 100
 X_train_array = [X_train[:, 0], X_train[:, 1]]
@@ -283,5 +286,11 @@ history = model.fit(x=X_train_array, y=y_train, batch_size=10000, epochs=5, verb
 
 ![CF_loss](/blog/assets/CF_loss.png)
 ![CF_accuracy](/blog/assets/CF_accuracy.png)
+
+
+## Testing
+
+
+
 
 <font color='#909194'>Last updated: April 25, 2021</font>
