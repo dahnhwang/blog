@@ -295,7 +295,7 @@ x_test_array = [x_test[:, 0], x_test[:, 1]]
 y_classes = np.round(model.predict(x_test_array))
 {% endhighlight %}
 
-위 Train/Validation/Test set splitting에서 분리해놓았던 `x_test`의 구직자 및 채용공고 고유번호 데이터를 모델에 넣고 예측값을 살펴본다. 0에서 1 사이의 확률값으로 나오는 실수를 0.5 이상인 경우 반올림해주는 numpy의 `round` 함수를 사용하였다. 
+위 Train/Validation/Test set splitting에서 분리해놓았던 `x_test`의 구직자 및 채용공고 고유번호 데이터를 모델에 넣고 예측값을 살펴본다. 0에서 1 사이의 확률값으로 나오는 실수를 0.5 이상인 경우 반올림해주는 numpy의 `round` 함수를 사용하면 아래와 같이 지원하지 않는다(0) 또는 지원한다(1)는 예측값으로 결과를 보여주게 된다. 
 
 array([[0.],
        [0.],
@@ -305,7 +305,21 @@ array([[0.],
        [0.],
        [0.]], dtype=float32)
 
+{% highlight python %}
+result = pd.DataFrame(y_classes, columns=['prediction'])
+count = result['prediction'].value_counts()
+count
+{% endhighlight %}
 
+0으로 예측한 경우는 총 4,772,819개, 1으로 예측한 경우는 총 86,793개로 확인되었다.
 
+{% highlight python %}
+import sklearn
+acc = sklearn.metrics.accuracy_score(np.array(y_test), 
+                                     np.array(y_classes))  
+acc
+{% endhighlight %}
+
+예측값과 실제값과 사이의 정확도를 계산한 결과인 `acc`는 0.9817839366599638으로 확인되었다.
 
 <font color='#909194'>Last updated: April 25, 2021</font>
