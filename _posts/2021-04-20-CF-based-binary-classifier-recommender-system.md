@@ -262,7 +262,19 @@ def Recommender(n_users, n_items, n_factors):
 
 `n_users`명의 구직자와 `n_items`개의 채용공고가 동일한 `n_factors` 차원의 벡터로 각각 임베딩된 뒤 내적(Dot product)이 행해지고, 활성화함수인 sigmoid를 거쳐 결과로 나온 하나의 single value가 바로 특정 채용공고에 대한 구직자의 지원 여부 예측값(확률)이 된다. 정답이 있는 지도학습이므로 예측값이 실제값과 얼마나 다른지 판단하는 binary cross entropy라는 손실함수를 통해 다시 네트워크(임베딩 벡터)를 반복적으로 학습시킨다.
 
-Binary Classification 문제의 경우 활성화함수로 sigmoid function을 사용하는데, 이해를 위해서 찾고 또 찾다가 한 [유튜브 강의](https://www.youtube.com/watch?v=WsFasV46KgQ)에서 명쾌한 해답을 얻었다. 시간이 되면 다른 포스팅으로 남겨두겠다.
+Binary Classification 문제의 경우 활성화함수로 sigmoid function을 사용하는데, 이해를 위해서 찾고 또 찾다가 한 [유튜브 강의](https://www.youtube.com/watch?v=WsFasV46KgQ)에서 명쾌한 해답을 얻었다. 참고하면 좋다.
+
+
+{% highlight python %}
+n_factors = 100
+X_train_array = [X_train[:, 0], X_train[:, 1]]
+X_val_array = [X_val[:, 0], X_val[:, 1]]
+
+model = Recommender(user_count, job_count, n_factors)
+{% endhighlight %}
+
+잠재인수 `n_factors`를 100차원으로 놓고 모델객체를 생성하였다. 차원이 커질 수록 학습속도는 더 느려지고 오버피팅될 확률이 크다. 여러번 해봤지만 100정도가 적당했던 것 같다.
+
 
 
 
