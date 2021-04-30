@@ -281,7 +281,8 @@ history = model.fit(x=X_train_array, y=y_train, batch_size=10000, epochs=5, verb
 
 `batch_size` 및 `epoch`를 각각 [1000, 5000, 10000], [5, 10, 20] 씩 변화시켜가며 학습시켜보았는데 크게 차이가 없었다. 아래는 가장 빠르게 학습을 시켜본 결과.
 
-`Epoch 1/5
+{% highlight python %}
+Epoch 1/5
 1556/1556 [==============================] - 28s 17ms/step - loss: 0.8919 - accuracy: 0.9949 - val_loss: 1.0052 - val_accuracy: 0.9802
 Epoch 2/5
 1556/1556 [==============================] - 26s 17ms/step - loss: 0.8705 - accuracy: 0.9986 - val_loss: 0.9909 - val_accuracy: 0.9808
@@ -290,8 +291,8 @@ Epoch 3/5
 Epoch 4/5
 1556/1556 [==============================] - 26s 16ms/step - loss: 0.8705 - accuracy: 0.9986 - val_loss: 0.9933 - val_accuracy: 0.9811
 Epoch 5/5
-1556/1556 [==============================] - 26s 17ms/step - loss: 0.8705 - accuracy: 0.9986 - val_loss: 0.9830 - val_accuracy: 0.9818`
-
+1556/1556 [==============================] - 26s 17ms/step - loss: 0.8705 - accuracy: 0.9986 - val_loss: 0.9830 - val_accuracy: 0.9818
+{% endhighlight %}
 
 
 <font color='#909194'>Last updated: April 25, 2021</font>
