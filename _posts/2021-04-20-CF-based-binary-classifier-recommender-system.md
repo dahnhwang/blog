@@ -282,7 +282,7 @@ model = Recommender(user_count, job_count, n_factors)
 history = model.fit(x=X_train_array, y=y_train, batch_size=10000, epochs=5, verbose=1, validation_data=(X_val_array, y_val))
 {% endhighlight %}
 
-`batch_size` 및 `epoch`를 각각 [1000, 5000, 10000], [5, 10, 20] 씩 변화시켜가며 학습시켜보았는데 크게 차이가 없었다. 아래는 가장 빠른 조건으로 학습을 시켜본 결과.
+`batch_size` 및 `epoch`를 각각 [1000, 5000, 10000], [5, 10, 20] 씩 변화시켜가며 학습시켜보았는데 속도 외 성능상으로는 큰 차이가 없었다. 아래는 가장 빠른 조건으로 학습을 시켜본 결과.
 
 ![CF_loss](/blog/assets/CF_loss.png)
 ![CF_accuracy](/blog/assets/CF_accuracy.png)
@@ -290,7 +290,15 @@ history = model.fit(x=X_train_array, y=y_train, batch_size=10000, epochs=5, verb
 
 ## Testing
 
-
-
-
+{% highlight python %}
+test_job = x_test
+test_job
+{% endhighlight %}
+array([[1008, 1569],
+       [1036, 4331],
+       [2454, 4958],
+       ...,
+       [1292, 5574],
+       [1664, 2809],
+       [2190, 5346]])
 <font color='#909194'>Last updated: April 25, 2021</font>
