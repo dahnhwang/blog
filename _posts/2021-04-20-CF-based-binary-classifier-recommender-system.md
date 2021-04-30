@@ -275,7 +275,22 @@ model = Recommender(user_count, job_count, n_factors)
 
 잠재인수 `n_factors`를 100차원으로 놓고 모델객체를 생성하였다. 차원이 커질 수록 학습속도는 더 느려지고 오버피팅될 확률이 크다. 여러번 해봤지만 100정도가 적당했던 것 같다.
 
+{% highlight python %}
+history = model.fit(x=X_train_array, y=y_train, batch_size=10000, epochs=5, verbose=1, validation_data=(X_val_array, y_val))
+{% endhighlight %}
 
+`batch_size` 및 `epoch`를 각각 [1000, 5000, 10000], [5, 10, 20] 씩 변화시켜가며 학습시켜보았는데 크게 차이가 없었다. 아래는 가장 빠르게 학습을 시켜본 결과.
+
+`Epoch 1/5
+1556/1556 [==============================] - 28s 17ms/step - loss: 0.8919 - accuracy: 0.9949 - val_loss: 1.0052 - val_accuracy: 0.9802
+Epoch 2/5
+1556/1556 [==============================] - 26s 17ms/step - loss: 0.8705 - accuracy: 0.9986 - val_loss: 0.9909 - val_accuracy: 0.9808
+Epoch 3/5
+1556/1556 [==============================] - 26s 17ms/step - loss: 0.8704 - accuracy: 0.9986 - val_loss: 1.0034 - val_accuracy: 0.9801
+Epoch 4/5
+1556/1556 [==============================] - 26s 16ms/step - loss: 0.8705 - accuracy: 0.9986 - val_loss: 0.9933 - val_accuracy: 0.9811
+Epoch 5/5
+1556/1556 [==============================] - 26s 17ms/step - loss: 0.8705 - accuracy: 0.9986 - val_loss: 0.9830 - val_accuracy: 0.9818`
 
 
 
