@@ -295,7 +295,17 @@ x_test_array = [x_test[:, 0], x_test[:, 1]]
 y_classes = np.round(model.predict(x_test_array))
 {% endhighlight %}
 
-위 Train/Validation/Test set splitting에서 분리해놓았던 `x_test`의 구직자 및 채용공고 고유번호 데이터를 모델에 넣고 예측값을 살펴본다. 
+위 Train/Validation/Test set splitting에서 분리해놓았던 `x_test`의 구직자 및 채용공고 고유번호 데이터를 모델에 넣고 예측값을 살펴본다. 0에서 1 사이의 확률값으로 나오는 실수를 0.5 이상인 경우 반올림해주는 numpy의 `round` 함수를 사용하였다. 
+
+array([[0.],
+       [0.],
+       [1.],
+       ...,
+       [0.],
+       [0.],
+       [0.]], dtype=float32)
+
+
 
 
 <font color='#909194'>Last updated: April 25, 2021</font>
