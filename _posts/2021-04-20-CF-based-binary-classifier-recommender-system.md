@@ -322,4 +322,12 @@ acc
 
 예측값과 실제값과 사이의 정확도를 계산한 결과인 `acc`는 0.9817839366599638으로 확인되었다.
 
+{% highlight python %}
+from sklearn.metrics import classification_report
+
+target_names = ['class 0', 'class 1']
+report = classification_report(y_test, y_classes, target_names=target_names)
+print(report)
+{% endhighlight %}
+
 <font color='#909194'>Last updated: April 25, 2021</font>
