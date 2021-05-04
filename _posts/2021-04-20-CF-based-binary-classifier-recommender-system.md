@@ -94,8 +94,6 @@ raw.head(3)
 train.drop_duplicates(subset=None, keep="first", inplace=True)
 {% endhighlight %}
 
-이렇게 하여 `checked`의 값이 1인 총 ㅍ 된 테이블이 되었다.
-
 
 ### 3. 페이지 확인일시(`View.Start`)의 관계가 없는(즉 `checked`가 0인 경우) 구직자-채용정보 간 테이블을 생성하여 기존 테이블과 합침
 
@@ -355,5 +353,8 @@ history = model.fit(x=X_train_array, y=y_train, batch_size=10000, epochs=5, verb
 결과 실제 1인 데이터 중의 10%가 1로 판별되는 것으로 재현율이 높아졌음을 확인할 수 있었다.
 
 ## Review
+
+본 포스팅은 [프로그래머스]('https://programmers.co.kr/')
+
 
 <font color='#909194'>Last updated: April 25, 2021</font>
