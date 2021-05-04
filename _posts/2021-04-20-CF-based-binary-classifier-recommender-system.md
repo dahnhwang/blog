@@ -330,7 +330,7 @@ report = classification_report(y_test, y_classes, target_names=target_names)
 print(report)
 {% endhighlight %}
 
-분류모델 성능평가
+아래 분류모델 성능평가결과를 확인해보면 0이라고 예측한 데이터의 100%가 실제로 0이었고 1이라고 예측한 데이터의 0%가 실제로 1이었음을 알 수 있다. 또한 실제 0인 데이터 중의 98%가 0으로 판별되었고 실제 1인 데이터 중의 2%만 1로 판별되었음을 알 수 있다.
 
 |             | precision  |  recall | f1-score  | support|
 |-------------------------|---------|-----------|--------|
