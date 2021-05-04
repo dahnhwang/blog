@@ -342,6 +342,17 @@ print(report)
 
 확인해보면 0이라고 예측한 데이터의 100%가 실제로 0이었고 1이라고 예측한 데이터의 0%가 실제로 1이었음을 알 수 있다. 또한 실제 0인 데이터 중의 98%가 0으로 판별되었고 실제 1인 데이터 중의 2%만 1로 판별되었음을 알 수 있다. 즉 '지원하지 않는다'에 해당하는 0인 데이터가 압도적으로 많아(skewed) 모델이 좀 더 0이라고 예측을 잘 하도록 학습이 되었다고 추론해볼 수 있다.
 
-클래스 불균형(Class imbalance)의 경우 크게 두 가지 해결방법이 있는데 첫째는 모델링을 할때  
+클래스 불균형(Class imbalance)의 경우 크게 두 가지 해결방법이 있는데 첫째는 모델링을 할때 관찰데이터가 적은 쪽의 데이터에 더 큰 가중치를 주는 방식이다. 둘째는 모델을 만드는 훈련데이터를 조절하는 것으로, up sampling(관찰데이터가 적은 쪽의 데이터를 더 많이 뽑아서 사용), down sampling(관찰데이터가 많은 쪽의 데이터를 조금만 뽑아서 사용), SMOTE(관찰데이터가 적은 쪽의 데이터와 유사한 샘플을 새로 만들어 사용)가 있다.
+
+첫번째 방식인 클래스 가중치를 이용한 방식으로 수정해보았다.
+
+{% highlight python %}
+class_weight = {0: 1.,
+                1: 10000.}
+history = model.fit(x=X_train_array, y=y_train, batch_size=10000, epochs=5, verbose=1, validation_data=(X_val_array, y_val),class_weight=class_weight)
+{% endhighlight %}
+
+
+
 
 <font color='#909194'>Last updated: April 25, 2021</font>
