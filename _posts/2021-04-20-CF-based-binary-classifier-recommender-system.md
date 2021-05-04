@@ -354,7 +354,11 @@ history = model.fit(x=X_train_array, y=y_train, batch_size=10000, epochs=5, verb
 
 ## Review
 
-본 포스팅은 [프로그래머스]('https://programmers.co.kr/')
+본 포스팅은 [프로그래머스]('https://programmers.co.kr/') 사이트의 데이터분석 과제를 수행하고 좀 더 확실하게 정리해두고 싶어서 작성하게 되었다. 해당 과제는 프로그래머스 사이트의 내부 사용자 및 채용공고 데이터를 가지고 진행이 되기 때문에 보안에 대한 이슈가 있어 포스팅할 수 없다.
+
+따라서 본 포스팅에서는 유사한 데이터셋을 kaggle에서 찾은 다음 새로 만들어야 하는 번거로운 과정을 거쳐야 했다. 채용공고의 확인여부를 0과 1로 가공하는 과정에서 데이터를 강제로 생성하였고 또한 굉장히 언밸런스드 된 데이터가 되었기 때문에 학습자체는 높은 accuracy를 보였지만, 분류문제의 핵심인 precision/recall의 낮은 지표를 보았을때 데이터에 오버피티드 된 모델임을 확인할 수 있었다.
+
+추가적으로 down sampling, up sampling, SMOTE, 모델 수정, 모델 파라미터 수정 등 작업으로 개선을 해볼 수 있지만 이쯤에서 포스팅을 종료해야겠다.
 
 
-<font color='#909194'>Last updated: April 25, 2021</font>
+<font color='#909194'>Last updated: May 4, 2021</font>
