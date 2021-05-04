@@ -332,7 +332,7 @@ print(report)
 
 분류모델 성능평가
 
-|              precision  |  recall | f1-score  | support|
+|             | precision  |  recall | f1-score  | support|
 |-------------------------|---------|-----------|--------|
 |     class 0   |    1.00  |    0.98     | 0.99 |  4857828|
  |    class 1    |   0.00   |   0.02    |  0.00  |    1784|
