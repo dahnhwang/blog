@@ -330,4 +330,15 @@ report = classification_report(y_test, y_classes, target_names=target_names)
 print(report)
 {% endhighlight %}
 
+분류모델 성능평가
+
+>              precision    recall  f1-score   support
+
+>     class 0       1.00      0.98      0.99   4857828
+ >    class 1       0.00      0.02      0.00      1784
+
+>    accuracy                           0.98   4859612
+>   macro avg       0.50      0.50      0.50   4859612
+>weighted avg       1.00      0.98      0.99   4859612
+
 <font color='#909194'>Last updated: April 25, 2021</font>
