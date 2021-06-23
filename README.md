@@ -4,6 +4,7 @@ permalink: "/about/"
 layout: page
 ---
 
+Life with codes and two kids since 2016.
 
 {% highlight python %}
 class Dahn:
@@ -35,9 +36,6 @@ dahn = Dahn(lifespan)
 dahn.be_happy()
 {% endhighlight %}
 
-Interested in NLP & Recommender system.
-
-Life with codes and two kids since 2016.
 
 
 
