@@ -6,7 +6,10 @@ layout: page
 
 Dahn Hwang.
 
-Life with codes and two kids since 2016.
+Life with codes and two kids since 2016 (The year my first daughter was born).
+
+I am a developer who wants to expand my job from back-end engineer to data engineering.
+
 
 {% highlight python %}
 class Dahn:
