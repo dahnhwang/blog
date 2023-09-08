@@ -24,15 +24,15 @@ class Dahn:
 	def do_what_i_want(self):
 	    dont_be_hasty()
 	    dont_make_excuse()
-	    return deep_dive()        
+	    return dive_deep()        
 
 def dont_be_hasty():
     print('Take time, get enough information, make sure it is what you want.')
 
 def dont_make_excuse():
-    print('Do not give up, as if there is no alternative. Trust yourself.')
+    print('Do not give up in the middle of the Dip. Trust yourself.')
 
-def deep_dive():
+def dive_deep():
     print('Enjoy')
     return 1	    
 
