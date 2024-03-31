@@ -21,12 +21,12 @@ KEYS pattern
 {% highlight java %}
 @Cacheable(value = "selectRoomNo", key = "#p0.roomNo")
 public String selectRoomNo(Room room) {
-
+	//do something...
 }
 
 @Cacheable(value = "selectReviewCount", key = "#p0.roomNo")
 public String selectReviewCount(Room room) {
-
+	//do something...
 }
 
 @Caching(evict = {
@@ -34,7 +34,7 @@ public String selectReviewCount(Room room) {
     @CacheEvict(value = "selectReviewCount", key = "#p0.roomNo")
 })
 public String updateRoomReview(Room room) {
-
+	//do something...
 }
 {% endhighlight %}
 
