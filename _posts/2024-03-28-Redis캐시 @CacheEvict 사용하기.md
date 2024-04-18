@@ -43,11 +43,11 @@ public String updateRoomReview(Room room) {
 
 이 때 주의할 점은 key가 String의 조합으로 생성된다는 점이다. 따라서 `selectRoomNo`의 key순서가 `#p0.roomNo, #p1.roomType`이고, `updateRoomReview`에서는 `#p1.roomType, #p0.roomNo`로 줬다면 둘은 동일한 문자열으로 생성되지 않으므로 evict시 정확히 원하는 캐시키를 타겟팅할 수 없게된다. 따라서 key부분의 순서를 맞춰주는 것이 중요하다.
 
-한 가지 더, `selectRoomNo`의 `#p1.roomType = null`이고 `updateRoomReview`로 들어오는 파라미터 `#p1.roomType = ""`이라면 이 둘 역시 동일한 캐시키로 잡히지 않는다. 이유는 Serializer의 특성 때문으로 다음 포스팅에서 다루고자 한다.
+한 가지 더, `selectRoomNo`의 `#p1.roomType = null`이고 `updateRoomReview`로 들어오는 파라미터 `#p1.roomType = ""`이라면 이 둘 역시 동일한 캐시키로 잡히지 않았다. 이유는 내 경우 Serializer의 특성 때문이었던 것으로 확인하였다. 다음 포스팅에서 다루고자 한다.
 
 참고
-[레디스 공식문서](https://redis.io/commands/keys)
-[Spring 의 CacheEvict 에서 allEntries=true 는 Redis에서 어떻게 동작하게 될까?](https://charsyam.wordpress.com/2022/04/18/%EC%9E%85-%EA%B0%9C%EB%B0%9C-spring-%EC%9D%98-cacheevict-%EC%97%90%EC%84%9C-allentriestrue-%EB%8A%94-redis%EC%97%90%EC%84%9C-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EA%B2%8C/)
+[레디스 공식문서](https://redis.io/commands/keys),
+[Spring 의 CacheEvict 에서 allEntries=true 는 Redis에서 어떻게 동작하게 될까?](https://charsyam.wordpress.com/2022/04/18/%EC%9E%85-%EA%B0%9C%EB%B0%9C-spring-%EC%9D%98-cacheevict-%EC%97%90%EC%84%9C-allentriestrue-%EB%8A%94-redis%EC%97%90%EC%84%9C-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%98%EA%B2%8C/),
 [캐시(Cache) 추상화와 사용법(@Cacheable, @CachePut, @CacheEvict)](https://mangkyu.tistory.com/179)
 
 <font color='#909194'>Last updated: April 17, 2024</font>
